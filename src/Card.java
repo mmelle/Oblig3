@@ -6,6 +6,8 @@ abstract class Card {
     private boolean sperret;
     public static int kortnummer;
 
+    public Card(){}
+
     public Card(String fornavn, String etternavn, int pin){
         this.fornavn = fornavn;
         this.etternavn = etternavn;
@@ -20,6 +22,18 @@ abstract class Card {
 
     public boolean isSuspended(){
         return sperret;
+    }
+
+    public int getKortnummer(){
+        return kortnummer;
+    }
+
+    public void setKortnummer(int kortnm){
+        kortnummer = kortnm;
+    }
+
+    public void setSperret(boolean checkPIN){
+       sperret = checkPIN;
     }
 
     public String toString(){
