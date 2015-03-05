@@ -3,11 +3,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Guest extends Card{
+    private String navn;
     private int pin;
     private GregorianCalendar dateCreated;
     private GregorianCalendar dateExpired;
 
-    public Guest(int pin){
+    public Guest(String navn, int pin){
+        this.navn = getName();
         this.pin = 9999;
         this.kortnummer = getKortnummer();
         setKortnummer(getKortnummer() + 1);
@@ -22,7 +24,11 @@ public class Guest extends Card{
     public boolean checkPIN(int pin) {
         GregorianCalendar now = new GregorianCalendar();
         if (dateExpired.compareTo(now) > 0){
-            return true;
+            if (this.pin == pin){
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
