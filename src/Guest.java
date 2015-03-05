@@ -9,10 +9,10 @@ public class Guest extends Card{
     private GregorianCalendar dateExpired;
 
     public Guest(String navn, int pin){
-        this.navn = getName();
-        this.pin = 9999;
-        this.kortnummer = getKortnummer();
-        setKortnummer(getKortnummer() + 1);
+        setName(navn);
+        setPIN(pin);
+        setKortnummer(getKortnummer());
+        increaseKortnummer();
         this.dateCreated = new GregorianCalendar();
         this.dateExpired = new GregorianCalendar(dateCreated.get(Calendar.YEAR),
                                 dateCreated.get(Calendar.MONTH), dateCreated.get(Calendar.DATE) + 7,
@@ -24,7 +24,7 @@ public class Guest extends Card{
     public boolean checkPIN(int pin) {
         GregorianCalendar now = new GregorianCalendar();
         if (dateExpired.compareTo(now) > 0){
-            if (this.pin == pin){
+            if (getPin() == pin){
                 return true;
             } else {
                 return false;

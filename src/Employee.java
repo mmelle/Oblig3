@@ -14,10 +14,10 @@ public class Employee extends Card implements Permanent {
     Scanner input = new Scanner(System.in);
 
     public Employee(String name, int pin){
-        this.name = name;
-        this.pin = pin;
-        this.kortnummer = getKortnummer();
-        setKortnummer(getKortnummer() + 1);
+        setName(name);
+        setPIN(pin);
+        setKortnummer(getKortnummer());
+        increaseKortnummer();
     }
 
     public void useCard(){
@@ -31,7 +31,7 @@ public class Employee extends Card implements Permanent {
 
     @Override
     public boolean checkPIN(int pin) {
-        if (this.pin == pin){
+        if (getPin() == pin){
             return true;
         } else {
             return false;

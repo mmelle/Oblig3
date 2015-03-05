@@ -3,14 +3,15 @@ abstract class Card {
     private String navn;
     private int pin;
     private boolean sperret;
-    public static int kortnummer;
+    private static int kortnummer;
 
     public Card(){}
 
     public Card(String navn, int pin){
         this.navn = navn;
         this.pin = pin;
-        this.kortnummer = kortnummer++;
+        this.kortnummer = kortnummer;
+        increaseKortnummer();
         this.sperret = false;
     }
 
@@ -34,6 +35,10 @@ abstract class Card {
         sperret = checkPIN;
     }
 
+    public void setName(String name){
+        navn = name;
+    }
+
     public String toString(){
         return "Name: " + getName() + " Pin: " + getPin() + " Kortnummer: " + getKortnummer()
                 + " Sperret: " + isSuspended();
@@ -43,5 +48,13 @@ abstract class Card {
 
     public int getPin() {
         return pin;
+    }
+
+    public void setPIN(int pin2){
+        pin = pin2;
+    }
+
+    public void increaseKortnummer(){
+        kortnummer++;
     }
 }

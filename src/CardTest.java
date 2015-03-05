@@ -11,7 +11,6 @@ public class CardTest {
         reg.add(c2);
         for (int i=0; i<reg.size(); i++) {
             Card card = (Card)reg.get(i);
-            System.out.println(card.getName());
             System.out.print(card);
             System.out.println("\nTest av kort: med kode 1234 er" + (card.checkPIN(1234) ? " gyldig" : " ugyldig" ) );
                     System.out.println("\nTest av kort: med kode 9999 er" + (card.checkPIN(9999) ? " gyldig" : " ugyldig" ) );
