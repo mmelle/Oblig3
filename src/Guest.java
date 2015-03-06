@@ -7,6 +7,9 @@ public class Guest extends Card{
     private int pin;
     private GregorianCalendar dateCreated;
     private GregorianCalendar dateExpired;
+    private String name;
+    private String firstName;
+    private String lastName;
 
     public Guest(String navn, int pin){
         setName(navn);
@@ -32,5 +35,27 @@ public class Guest extends Card{
         } else {
             return false;
         }
+    }
+
+    @Override
+    public String getLastName() {
+        name = getName();
+        for(int i = 0; i < name.length(); i++){
+            if(name.charAt(i) == ' '){
+                lastName = name.substring(i+1, name.length());
+            }
+        }
+        return lastName;
+    }
+
+    @Override
+    public String getFirstName() {
+        name = getName();
+        for(int i = 0; i < name.length(); i++){
+            if(name.charAt(i) == ' '){
+                firstName = name.substring(0, i);
+            }
+        }
+        return firstName;
     }
 }

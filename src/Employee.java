@@ -45,6 +45,12 @@ public class Employee extends Card implements Permanent {
 
     @Override
     public String getFirstName() {
+        name = getName();
+        for(int i = 0; i < name.length(); i++){
+            if(name.charAt(i) == ' '){
+                firstName = name.substring(0, i);
+            }
+        }
         return firstName;
     }
 
@@ -55,6 +61,12 @@ public class Employee extends Card implements Permanent {
 
     @Override
     public String getLastName() {
+        name = getName();
+        for(int i = 0; i < name.length(); i++){
+            if(name.charAt(i) == ' '){
+                lastName = name.substring(i+1, name.length());
+            }
+        }
         return lastName;
     }
 

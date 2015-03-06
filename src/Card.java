@@ -1,5 +1,6 @@
+import java.util.Comparator;
 
-abstract class Card {
+abstract class Card implements Comparable<Card>, Cloneable{
     private String navn;
     private int pin;
     private boolean sperret;
@@ -10,7 +11,7 @@ abstract class Card {
     public Card(String navn, int pin){
         this.navn = navn;
         this.pin = pin;
-        this.kortnummer = kortnummer;
+        kortnummer = kortnummer;
         increaseKortnummer();
         this.sperret = false;
     }
@@ -57,4 +58,23 @@ abstract class Card {
     public void increaseKortnummer(){
         kortnummer++;
     }
+
+    public int compareTo(Card card){
+        if (getLastName().compareTo(card.getLastName()) == 0){
+            return getFirstName().compareTo(card.getFirstName());
+        } else {
+            return getLastName().compareTo(card.getLastName());
+        }
+    }
+
+    public abstract String getLastName();
+    public abstract String getFirstName();
+
+    public static Card cloneCard(Card card) throws CloneNotSupportedException {
+        Card newCard = (Card) card.clone();
+        return newCard;
+    }
+
+
 }
+
